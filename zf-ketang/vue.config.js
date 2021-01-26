@@ -1,8 +1,12 @@
+function resolve(dir) {
+  return require('path').join(__dirname, dir)
+}
+
 module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: `@import "@/style/common.scss";` //引入全局变量
+        prependData: `@import "@/styles/common.scss";` //引入全局变量
       },
       // 配置 px2rem  postcss-plugin-px2rem lib-flexible
       postcss: {
@@ -13,5 +17,17 @@ module.exports = {
         ]
       }
     }
-  }
+  },
+  productionSourceMap: false,
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('@a', resolve('src/api'))
+      .set('@c', resolve('src/components'))
+      .set('@p', resolve('src/public'))
+      .set('@s', resolve('src/store'))
+      .set('@sty', resolve('src/styles'))
+      .set('@v', resolve('src/views'))
+  },
+  lintOnSave: false
 }
