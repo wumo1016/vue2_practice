@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/home'
 import LoadingComponent from '@c/loading'
+import hooks from './hooks'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,10 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+Object.values(hooks).forEach(hook => {
+  router.beforeEach(hook)
 })
 
 export default router

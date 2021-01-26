@@ -1,4 +1,5 @@
 import * as Types from '@s/action-types'
+import { fecthSlides } from '@a/home'
 export default {
   state: {
     category: -1,
@@ -13,9 +14,9 @@ export default {
     }
   },
   actions: {
-    // async [Types.SET_SLIDES]({ commit }) {
-    //   let slides = await fecthSlides()
-    //   commit(Types.SET_SLIDES, slides) // 交给mutation去更改状态
-    // }
+    async [Types.SET_SLIDES]({ commit }) {
+      const slides = await fecthSlides()
+      commit(Types.SET_SLIDES, slides)
+    }
   }
 }
