@@ -33,6 +33,16 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: loadAsyncComponent(() => import('@/views/profile'))
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: loadAsyncComponent(() => import('@/views/login'))
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: loadAsyncComponent(() => import('@/views/register'))
   }
 ]
 

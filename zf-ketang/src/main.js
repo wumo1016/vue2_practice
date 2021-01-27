@@ -10,6 +10,11 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 Vue.use(Vant)
 
+import directives from '@/utils/directives'
+Object.entries(directives).forEach(([id, define]) => {
+  Vue.directive(id, define)
+})
+
 new Vue({
   router,
   store,
